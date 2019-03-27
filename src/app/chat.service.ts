@@ -15,8 +15,8 @@ export class ChatService {
     this.socket = io(this.url);
   }
 
-  public sendMsg(message) {
-    this.socket.emit("new-message", message);
+  public sendMsg(array) {
+    this.socket.emit("new-message", array);
   }
 
   public sendTypingStatus(status) {
@@ -25,8 +25,8 @@ export class ChatService {
 
   public getMsgs = () => {
     return Observable.create((observer) => {
-      this.socket.on("new-message", (message) => {
-        observer.next(message);
+      this.socket.on("new-message", (array) => {
+        observer.next(array);
       });
     });
   }

@@ -2,9 +2,9 @@
   {{message}}
 </div>
 
+<input type="text" [(ngModel)]="sendingMsg" (keyup)="typing()">
+<button (click)="sendMsg()">Send</button>
+
 <p *ngIf="recievingTypingStatus">
   {{name}} is typing...
 </p>
-
-<input type="text" [(ngModel)]="sendingMsg" (keyup)="typingStatus()">
-<button (click)="sendMsg()">Send</button>

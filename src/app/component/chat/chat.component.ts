@@ -24,24 +24,23 @@ export class ChatComponent implements OnInit {
   constructor(private chatSrv: ChatService, private userSrv: UserService) { }
 
   sendMsg() {
-    this.chatSrv.sendMsg(this.sendingMsg);
+    this.sendingTypingStatus = 0;
+    this.chatSrv.sendMsg([this.sendingTypingStatus, this.sendingMsg]);
     this.sendingMsg = "";
   }
 
-  typingStatus() {
-    this.sendingTypingStatus = 1;
+  changeStatus() {
   }
 
-  sendTypingStatus() {
-    // this.chatSrv.sendTypingStatus(this.sendingTypingStatus);
-    this.sendingTypingStatus = 0;
+  typing() {
+    if (this.sendingMsg.length) {
+      this.sendingTypingStatus = 1;
+      this.chatSrv.sendTypingStatus(this.sendingTypingStatus);
+    } else if (this.sendingMsg.length === 0) {
+      this.sendingTypingStatus = 0;
+      this.chatSrv.sendTypingStatus(this.sendingTypingStatus);
+    }
   }
-
-  // sendStatus() {
-  //   this.sendingTypingStatus = 1;
-  //   // console.log(this.arr);
-  //   this.chatSrv.isTypi(this.arr[0]);
-  // }
 
   getName() {
     this.name = localStorage.getItem("name");
@@ -53,7 +52,8 @@ export class ChatComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.messages.push(res);
+          this.messages.push(res[1]);
+          this.recievingTypingStatus = res[0];
           console.log(this.messages.length);
           console.log(this.messages);
         },
@@ -62,10 +62,6 @@ export class ChatComponent implements OnInit {
         });
 
     this.getName();
-
-    // this.sendTypingStatus();
-
-    this.chatSrv.sendTypingStatus(this.sendingTypingStatus);
 
     this.chatSrv
       .getTypingStatus()
