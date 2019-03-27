@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private _userUrl = "/connect_and_share/user";
-  private _homeUrl = "/connect_and_share";
+  private _userUrl = "http://localhost:5000/connect_and_share/user";
+  private _homeUrl = "http://localhost:5000/connect_and_share";
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +16,9 @@ export class UserService {
 
   userLogin(cred) {
     return this.http.post<any>(this._homeUrl + "/user_login", cred);
+  }
+
+  isLogIn() {
+    return !!localStorage.getItem("token");
   }
 }

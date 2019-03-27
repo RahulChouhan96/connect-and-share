@@ -1,0 +1,10 @@
+<div *ngFor="let message of messages">
+  {{message}}
+</div>
+
+<p *ngIf="recievingTypingStatus">
+  {{name}} is typing...
+</p>
+
+<input type="text" [(ngModel)]="sendingMsg" (keyup)="typingStatus()">
+<button (click)="sendMsg()">Send</button>

@@ -19,6 +19,10 @@ export class ChatService {
     this.socket.emit("new-message", message);
   }
 
+  public sendTypingStatus(status) {
+    return this.socket.emit("typing", status);
+  }
+
   public getMsgs = () => {
     return Observable.create((observer) => {
       this.socket.on("new-message", (message) => {
@@ -27,12 +31,11 @@ export class ChatService {
     });
   }
 
-  // public isTyping = () => {
-  //   console.log("Is typing");
-  //   return Observable.create((observer) => {
-  //     this.socket.on("typing", (data) => {
-  //       observer.next(data);
-  //     });
-  //   });
-  // }
+  public getTypingStatus = () => {
+    return Observable.create((observer) => {
+      this.socket.on("typing", (typingStatus) => {
+        observer.next(typingStatus);
+      });
+    });
+  }
 }

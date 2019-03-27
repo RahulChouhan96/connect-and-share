@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { ChatService } from './chat.service';
 import { UserLoginComponent } from './component/user-login/user-login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './component/chat/chat.component';
+import { UserService } from './services/user.service';
+import { RoutingGuard } from './guards/routing.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ChatService],
+  providers: [UserService, ChatService, RoutingGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
