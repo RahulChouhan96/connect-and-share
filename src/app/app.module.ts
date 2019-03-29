@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './component/chat/chat.component';
 import { UserService } from './services/user.service';
 import { RoutingGuard } from './guards/routing.guard';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
-    ChatComponent
+    ChatComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

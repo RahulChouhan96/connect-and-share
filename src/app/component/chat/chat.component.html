@@ -2,9 +2,23 @@
   {{message}}
 </div>
 
-<input type="text" [(ngModel)]="sendingMsg" (keyup)="typing()">
-<button (click)="sendMsg()">Send</button>
+<p>To:&nbsp;</p> <input type="text" [(ngModel)]="composedMail.to">
 
-<p *ngIf="recievingTypingStatus">
-  {{name}} is typing...
-</p>
+<p>Subject:&nbsp;</p><input type="text" [(ngModel)]="composedMail.subject">
+
+<p>Mail:&nbsp;</p><input type="text" [(ngModel)]="composedMail.msg" required>
+
+<input type="button" value="SEND" (click)="sendMail()">
+<!-- 
+<input type="text" [(ngModel)]="sendingMsg" (keyup)="typing()">
+<button (click)="sendMsgToOne()">Send</button> -->
+
+<!-- <p *ngIf="recievingTypingStatus">
+  {{sendersName}} is typing...
+</p> -->
+
+
+<div *ngIf="receivedMail">
+  <p>Subject: {{receivedMail.subject}} </p>
+  <p>Message: {{receivedMail.msg}} </p>
+</div>

@@ -8,6 +8,8 @@ export class UserService {
   private _userUrl = "http://localhost:5000/connect_and_share/user";
   private _homeUrl = "http://localhost:5000/connect_and_share";
 
+  userName: String;
+
   constructor(private http: HttpClient) { }
 
   getOneUser(userId) {
@@ -19,6 +21,10 @@ export class UserService {
   }
 
   isLogIn() {
-    return !!localStorage.getItem("token");
+    return !!sessionStorage.getItem("token");
+  }
+
+  takeUserName(userName){
+    this.userName = userName;
   }
 }
