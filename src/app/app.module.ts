@@ -11,13 +11,15 @@ import { ChatComponent } from './component/chat/chat.component';
 import { UserService } from './services/user.service';
 import { RoutingGuard } from './guards/routing.guard';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { InboxComponent } from './component/inbox/inbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
     ChatComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,

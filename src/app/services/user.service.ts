@@ -24,7 +24,7 @@ export class UserService {
     return !!sessionStorage.getItem("token");
   }
 
-  takeUserName(userName){
-    this.userName = userName;
-  }
+  // takeUserName(userName){
+  //   this.userName = userName;
+  // }
 }

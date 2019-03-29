@@ -6,7 +6,7 @@
 
 <p>Subject:&nbsp;</p><input type="text" [(ngModel)]="composedMail.subject">
 
-<p>Mail:&nbsp;</p><input type="text" [(ngModel)]="composedMail.msg" required>
+<p>Mail:&nbsp;</p><input type="text" [(ngModel)]="composedMail.message" required>
 
 <input type="button" value="SEND" (click)="sendMail()">
 <!-- 
@@ -20,5 +20,5 @@
 
 <div *ngIf="receivedMail">
   <p>Subject: {{receivedMail.subject}} </p>
-  <p>Message: {{receivedMail.msg}} </p>
+  <p>Message: {{receivedMail.message}} </p>
 </div>

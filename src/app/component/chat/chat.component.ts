@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit {
   }
 
   getUserName() {
-    this.userName = this.userSrv.userName;
+    this.userName = sessionStorage.getItem("userName");
   }
 
   ngOnInit() {
