@@ -20,6 +20,7 @@ export class ChatService {
   }
 
   public getMail() {
+    console.log("In service of getting mail");
     return Observable.create((observer) => {
       this.socket.on("new-mail", (mail => {
         observer.next(mail);
