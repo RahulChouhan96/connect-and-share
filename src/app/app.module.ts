@@ -14,6 +14,7 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { InboxComponent } from './component/inbox/inbox.component';
 import { SentComponent } from './component/sent/sent.component';
 import { DiscussionsComponent } from './component/discussions/discussions.component';
+import { CreateComponent } from './workspace/create/create.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DiscussionsComponent } from './component/discussions/discussions.compon
     UserProfileComponent,
     InboxComponent,
     SentComponent,
-    DiscussionsComponent
+    DiscussionsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
