@@ -2,19 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/chat.service';
 
 @Component({
-  selector: 'app-inbox',
-  templateUrl: './inbox.component.html',
-  styleUrls: ['./inbox.component.css']
+  selector: 'app-sent',
+  templateUrl: './sent.component.html',
+  styleUrls: ['./sent.component.css']
 })
-export class InboxComponent implements OnInit {
-  mails = [];
-  dbMails = [];
-  userName: String;
+export class SentComponent implements OnInit {
+  public mails: any;
+  public userName: String;
   constructor(private chatSrv: ChatService) { }
   getUserName() {
     this.userName = sessionStorage.getItem("userName");
   }
-
   ngOnInit() {
     this.chatSrv
       .getMail()

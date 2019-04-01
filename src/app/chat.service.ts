@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 // import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent, observable } from 'rxjs';
 
 import * as  io from 'socket.io-client';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,19 @@ import * as  io from 'socket.io-client';
 export class ChatService {
   private url = "http://localhost:5000";
   private socket;
+  private _mailUrl = this.url + "/connect_and_share/user/inbox";
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.socket = io(this.url);
+  }
+
+  public getMailFromDb(userName) {
+    let obj = {
+      "userName": userName
+    }
+    console.log("In client");
+    console.log(obj);
+    return this.http.post<any>(this._mailUrl, obj);
   }
 
   public sendMail(mail) {
