@@ -13,6 +13,7 @@ import { RoutingGuard } from './guards/routing.guard';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { InboxComponent } from './component/inbox/inbox.component';
 import { SentComponent } from './component/sent/sent.component';
+import { DiscussionsComponent } from './component/discussions/discussions.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SentComponent } from './component/sent/sent.component';
     ChatComponent,
     UserProfileComponent,
     InboxComponent,
-    SentComponent
+    SentComponent,
+    DiscussionsComponent
   ],
   imports: [
     BrowserModule,
