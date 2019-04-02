@@ -14,7 +14,9 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { InboxComponent } from './component/inbox/inbox.component';
 import { SentComponent } from './component/sent/sent.component';
 import { DiscussionsComponent } from './component/discussions/discussions.component';
-import { CreateComponent } from './workspace/create/create.component';
+import { CreateComponent } from './component/workspace/create/create.component';
+import { WorkspacesService } from './services/workspaces.service';
+import { WorkspacesComponent } from './component/workspace/workspaces/workspaces.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CreateComponent } from './workspace/create/create.component';
     InboxComponent,
     SentComponent,
     DiscussionsComponent,
-    CreateComponent
+    CreateComponent,
+    WorkspacesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { CreateComponent } from './workspace/create/create.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, ChatService, RoutingGuard],
+  providers: [UserService, ChatService, WorkspacesService, RoutingGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
