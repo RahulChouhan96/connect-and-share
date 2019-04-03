@@ -17,6 +17,8 @@ import { DiscussionsComponent } from './component/discussions/discussions.compon
 import { CreateComponent } from './component/workspace/create/create.component';
 import { WorkspacesService } from './services/workspaces.service';
 import { WorkspacesComponent } from './component/workspace/workspaces/workspaces.component';
+import { GetOneComponent } from './component/workspace/get-one/get-one.component';
+import { AddDiscussionComponent } from './component/workspace/add-discussion/add-discussion.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { WorkspacesComponent } from './component/workspace/workspaces/workspaces
     SentComponent,
     DiscussionsComponent,
     CreateComponent,
-    WorkspacesComponent
+    WorkspacesComponent,
+    GetOneComponent,
+    AddDiscussionComponent
   ],
   imports: [
     BrowserModule,

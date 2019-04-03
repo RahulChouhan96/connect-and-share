@@ -12,7 +12,24 @@ export class WorkspacesService {
     return this.http.post<any>(this._companyUrl + "/add_company_for_user", workSpace);
   }
 
-  public getWorkSpaces(){
-    return this.http.get<any>(this._companyUrl)
+  public getWorkSpaces(companyIds) {
+    let body = {
+      "companyId": companyIds
+    }
+    return this.http.post<any>(this._companyUrl + "/get_all_user_admin_company", body);
+  }
+
+  public getEmpWorkSpaces(userId) {
+    let body = {
+      "userId": userId
+    }
+    return this.http.post<any>(this._companyUrl + "/get_empcompanies_oneuser", body);
+  }
+
+  public getOneWorkspace(companyId) {
+    let body = {
+      "companyId": companyId
+    }
+    return this.http.post<any>(this._companyUrl + "/get_one_workspace", body);
   }
 }
