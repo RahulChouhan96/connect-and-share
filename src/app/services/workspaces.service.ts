@@ -14,7 +14,7 @@ export class WorkspacesService {
 
   public getWorkSpaces(companyIds) {
     let body = {
-      "companyId": companyIds
+      "userId": companyIds
     }
     return this.http.post<any>(this._companyUrl + "/get_all_user_admin_company", body);
   }
@@ -31,5 +31,9 @@ export class WorkspacesService {
       "companyId": companyId
     }
     return this.http.post<any>(this._companyUrl + "/get_one_workspace", body);
+  }
+
+  public addEmp(newEmp) {
+    return this.http.post<any>(this._companyUrl + "/add_one_emp_to_one_company", newEmp);
   }
 }

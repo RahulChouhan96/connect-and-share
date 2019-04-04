@@ -40,6 +40,10 @@ export class GetOneComponent implements OnInit {
       );
   }
 
+  isUserAdmin() {
+    return this.workSpace.userAdminId == this.getUserId();
+  }
+
   getAllDiscussions() {
     console.log(this.companyId);
     this.discussionsSrv.getAllDiscussion(this.companyId)
@@ -59,6 +63,14 @@ export class GetOneComponent implements OnInit {
       this.companyId = params.get("companyId");
       // console.log(this.companyId);
     });
+  }
+
+  getUserId() {
+    return sessionStorage.getItem("userId");
+  }
+
+  getUserName() {
+    return sessionStorage.getItem("userName");
   }
 
   // addOneDiscussion(companyId) {

@@ -79,9 +79,13 @@
         <h1 class="display-3">{{workSpace.companyName}} </h1>
         <p>{{workSpace.areaOfWork}}
         </p>
-        <p><a class="btn btn-primary btn-lg"
+        <p *ngIf="isUserAdmin()"><a class="btn btn-primary btn-lg"
             routerLink="/connect_and_share/workspaces/getOneWorkspace/add_discussion/{{companyId}}" role="button">Add
             Discussion &raquo;</a></p>
+        <p *ngIf="isUserAdmin()"><a class="btn btn-primary btn-lg"
+            routerLink="/connect_and_share/workspaces/getOneWorkspace/addEmp/{{companyId}}/{{workSpace.companyName}}"
+            role="button">Add
+            An Employee &raquo;</a></p>
       </div>
     </div>
 

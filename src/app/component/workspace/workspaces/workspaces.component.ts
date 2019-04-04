@@ -30,13 +30,13 @@ export class WorkspacesComponent implements OnInit {
   }
 
   getWorkSpaces() {
-    console.log(this.getCompanyIds());
-    this.workSpaceSrv.getWorkSpaces(this.getCompanyIds())
+    console.log(this.getUserId());
+    this.workSpaceSrv.getWorkSpaces(this.getUserId())
       .subscribe(
         res => {
-          console.log(res.auth);
+          console.log(res);
           this.response = res;
-          this.workSpaces = res.companies;
+          this.workSpaces = res.response;
         },
         err => {
           this.response = err;

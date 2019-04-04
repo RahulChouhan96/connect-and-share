@@ -12,6 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  userSignup(newUser) {
+    return this.http.post<any>(this._homeUrl + "/add_one_user", newUser);
+  }
+
   getOneUser(userId) {
     return this.http.post<any>(this._userUrl + "/get_one_user", userId);
   }

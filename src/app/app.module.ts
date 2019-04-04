@@ -19,6 +19,8 @@ import { WorkspacesService } from './services/workspaces.service';
 import { WorkspacesComponent } from './component/workspace/workspaces/workspaces.component';
 import { GetOneComponent } from './component/workspace/get-one/get-one.component';
 import { AddDiscussionComponent } from './component/workspace/add-discussion/add-discussion.component';
+import { UserRegistrationComponent } from './component/user-registration/user-registration.component';
+import { AddEmpComponent } from './component/workspace/add-emp/add-emp.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AddDiscussionComponent } from './component/workspace/add-discussion/add
     CreateComponent,
     WorkspacesComponent,
     GetOneComponent,
-    AddDiscussionComponent
+    AddDiscussionComponent,
+    UserRegistrationComponent,
+    AddEmpComponent
   ],
   imports: [
     BrowserModule,
