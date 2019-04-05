@@ -17,12 +17,12 @@ export class CreateComponent implements OnInit {
   constructor(private workSpaceSrv: WorkspacesService, private router: Router) { }
 
   ngOnInit() {
-    this.getUserId();
+    this.getUserName();
   }
 
   createWorkSpace() {
-    this.newWorkSpace.userId = this.getUserId();
-    console.log(this.newWorkSpace.userId);
+    this.newWorkSpace.userName = this.getUserName();
+    console.log(this.newWorkSpace.userName);
     this.workSpaceSrv.createWorkSpace(this.newWorkSpace)
       .subscribe(
         res => {
@@ -35,8 +35,8 @@ export class CreateComponent implements OnInit {
       );
   }
 
-  getUserId() {
-    return sessionStorage.getItem("userId");
+  getUserName() {
+    return sessionStorage.getItem("userName");
   }
 
 }

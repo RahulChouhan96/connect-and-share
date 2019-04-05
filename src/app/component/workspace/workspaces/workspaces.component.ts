@@ -25,13 +25,13 @@ export class WorkspacesComponent implements OnInit {
     return companyIdsString.split(",");
   }
 
-  getUserId() {
-    return sessionStorage.getItem("userId");
+  getUserName() {
+    return sessionStorage.getItem("userName");
   }
 
   getWorkSpaces() {
-    console.log(this.getUserId());
-    this.workSpaceSrv.getWorkSpaces(this.getUserId())
+    console.log(this.getUserName());
+    this.workSpaceSrv.getWorkSpaces(this.getUserName())
       .subscribe(
         res => {
           console.log(res);
@@ -47,7 +47,7 @@ export class WorkspacesComponent implements OnInit {
 
   getEmpWorkSpaces() {
     // console.log(this.getCompanyIds());
-    this.workSpaceSrv.getEmpWorkSpaces(this.getUserId())
+    this.workSpaceSrv.getEmpWorkSpaces(this.getUserName())
       .subscribe(
         res => {
           console.log(res.auth);

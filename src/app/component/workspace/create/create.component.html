@@ -46,8 +46,8 @@
     </div>
 
     <div class="form-label-group">
-      <input type="text" id="workSpaceName" class="form-control" name="workSpaceName" [(ngModel)]="newWorkSpace.companyName"
-        placeholder="WorkSpace Name" required autofocus>
+      <input type="text" id="workSpaceName" class="form-control" name="workSpaceName"
+        [(ngModel)]="newWorkSpace.companyName" placeholder="WorkSpace Name" required autofocus>
       <label for="workSpaceName">WorkSpace Name</label>
     </div>
 
@@ -64,8 +64,8 @@
     </div>
 
     <div class="form-label-group">
-      <textarea name="description" id="description" cols="45" rows="5"
-        placeholder="Description">{{newWorkSpace.description}} </textarea>
+      <textarea name="description" id="description" cols="45" rows="5" [(ngModel)]="newWorkSpace.description"
+        placeholder="Description"> </textarea>
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" (click)="createWorkSpace()" type="submit">Create</button>

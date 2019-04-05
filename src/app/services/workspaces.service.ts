@@ -12,9 +12,9 @@ export class WorkspacesService {
     return this.http.post<any>(this._companyUrl + "/add_company_for_user", workSpace);
   }
 
-  public getWorkSpaces(companyIds) {
+  public getWorkSpaces(userName) {
     let body = {
-      "userId": companyIds
+      "userName": userName
     }
     return this.http.post<any>(this._companyUrl + "/get_all_user_admin_company", body);
   }
