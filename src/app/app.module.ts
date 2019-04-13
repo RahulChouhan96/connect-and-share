@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ChatService } from './chat.service';
 import { UserLoginComponent } from './component/user-login/user-login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChatComponent } from './component/chat/chat.component';
 import { UserService } from './services/user.service';
 import { RoutingGuard } from './guards/routing.guard';
@@ -21,6 +21,10 @@ import { GetOneComponent } from './component/workspace/get-one/get-one.component
 import { AddDiscussionComponent } from './component/workspace/add-discussion/add-discussion.component';
 import { UserRegistrationComponent } from './component/user-registration/user-registration.component';
 import { AddEmpComponent } from './component/workspace/add-emp/add-emp.component';
+import { MainPageComponent } from './component/main-page/main-page.component';
+import { NavigationComponent } from './component/navigation/navigation.component';
+import { GetOneDiscussionComponent } from './component/get-one-discussion/get-one-discussion.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ import { AddEmpComponent } from './component/workspace/add-emp/add-emp.component
     GetOneComponent,
     AddDiscussionComponent,
     UserRegistrationComponent,
-    AddEmpComponent
+    AddEmpComponent,
+    MainPageComponent,
+    NavigationComponent,
+    GetOneDiscussionComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,11 @@ import { AddEmpComponent } from './component/workspace/add-emp/add-emp.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, ChatService, WorkspacesService, RoutingGuard],
+  providers: [UserService, ChatService, WorkspacesService, RoutingGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

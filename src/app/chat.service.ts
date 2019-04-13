@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as  io from 'socket.io-client';
 import { HttpClient } from '@angular/common/http';
+// import { Socket } from 'net';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ChatService {
   private url = "http://localhost:5000";
   private socket;
   private _mailUrl = this.url + "/connect_and_share/user/inbox";
+  private _sentMailUrl = this.url + "/connect_and_share/user/sent";
 
   constructor(private http: HttpClient) {
     this.socket = io(this.url);
@@ -95,6 +97,30 @@ export class ChatService {
         observer.next(data);
       })
     });
+  }
+
+  public joinGroup(companyId) {
+    this.socket.emit("join-group", companyId);
+  }
+
+  public sendViews(obj) {
+    return this.socket.emit("group-msg", obj);
+  }
+
+  public getGrpMsgs = () => {
+    return Observable.create((observer) => {
+      console.log("getting group msg");
+      this.socket.on("recieve-grp-msg", (obj) => {
+        observer.next(obj);
+      })
+    });
+  }
+
+  public getSentMailFromDb(userName) {
+    let obj = {
+      "userName": userName
+    }
+    return this.http.post<any>(this._sentMailUrl, obj);
   }
 
   ngOnInit() {

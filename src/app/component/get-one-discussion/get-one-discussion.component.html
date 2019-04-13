@@ -1,0 +1,10 @@
+<h1>{{discussion.topic}} </h1>
+<p>{{discussion.description}} </p>
+
+<div *ngFor="let rec of recieve">
+    <p>{{rec.userName}} </p>
+    <p>{{rec.view}} </p>
+</div>
+
+Your Views: <input type="text" [(ngModel)]="view">
+<input type="button" value="Send" (click)="sendViews()">

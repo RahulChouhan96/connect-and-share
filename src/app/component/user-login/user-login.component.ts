@@ -36,7 +36,7 @@ export class UserLoginComponent implements OnInit {
             sessionStorage.setItem("userName", res.userProfile.userName);
             sessionStorage.setItem("companyIds", res.userProfile.companyId);
             // this.userSrv.takeUserName(res.userProfile.userName);
-            this.router.navigate(["connect_and_share/user/chat"]);
+            this.router.navigate(["connect_and_share/user"]);
           } else {
             console.log(res);
             this.error = res.message;

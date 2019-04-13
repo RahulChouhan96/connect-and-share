@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiscussionsService } from 'src/app/services/discussions.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
+import { ChatService } from 'src/app/chat.service';
 
 @Component({
   selector: 'app-get-one',
@@ -13,18 +14,16 @@ export class GetOneComponent implements OnInit {
   discussions: any;
   employees: [String];
   companyId: String;
+  userEmpNames: String;
   // addDis
   constructor(private discussionsSrv: DiscussionsService, private workSpacesSrv: WorkspacesService, private router: Router,
-    private acRoute: ActivatedRoute) { }
+    private acRoute: ActivatedRoute, private chatSrv: ChatService) { }
 
   ngOnInit() {
     this.getCompanyId();
     this.getOneWorkSpace();
     this.getAllDiscussions();
-  }
-
-  getAllEmps() {
-
+    this.getAllEmpNames();
   }
 
   getOneWorkSpace() {
@@ -41,7 +40,21 @@ export class GetOneComponent implements OnInit {
   }
 
   isUserAdmin() {
-    return this.workSpace.userAdminId == this.getUserId();
+    return this.workSpace.userAdminName == this.getUserName();
+  }
+
+  getAllEmpNames() {
+    console.log("You in get all emps");
+    this.workSpacesSrv.getAllEmpNames(this.companyId)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.userEmpNames = res.userProfiles;
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
   getAllDiscussions() {
@@ -72,17 +85,4 @@ export class GetOneComponent implements OnInit {
   getUserName() {
     return sessionStorage.getItem("userName");
   }
-
-  // addOneDiscussion(companyId) {
-  //   this.discussionsSrv.addOneDiscussion(companyId)
-  //     .subscribe(
-  //       res => {
-  //         console.log(res);
-  //       },
-  //       err => {
-  //         console.log(err);
-  //       }
-  //     );
-  // }
-
 }

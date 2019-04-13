@@ -30,11 +30,11 @@ export class SentComponent implements OnInit {
     this.getUserName();
 
     this.chatSrv
-      .getMailFromDb(this.userName)
+      .getSentMailFromDb(this.userName)
       .subscribe(
-        (mails) => {
-          console.log(mails);
-          this.mails = mails;
+        (res) => {
+          console.log(res);
+          this.mails = res.response;
         },
         (err) => {
           console.log(err);

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WorkspacesService {
   private _companyUrl = "http://localhost:5000/connect_and_share/company";
+  private _discussionUrl = "http://localhost:5000/connect_and_share/company/discussion";
   constructor(private http: HttpClient) { }
 
   public createWorkSpace(workSpace) {
@@ -19,9 +20,9 @@ export class WorkspacesService {
     return this.http.post<any>(this._companyUrl + "/get_all_user_admin_company", body);
   }
 
-  public getEmpWorkSpaces(userId) {
+  public getEmpWorkSpaces(userName) {
     let body = {
-      "userId": userId
+      "userName": userName
     }
     return this.http.post<any>(this._companyUrl + "/get_empcompanies_oneuser", body);
   }
@@ -35,5 +36,23 @@ export class WorkspacesService {
 
   public addEmp(newEmp) {
     return this.http.post<any>(this._companyUrl + "/add_one_emp_to_one_company", newEmp);
+  }
+
+  public getAllEmpNames(companyId) {
+    let body = {
+      "companyId": companyId
+    }
+    return this.http.post<any>(this._companyUrl + "/getAllEmpsOneWorkSpace", body);
+  }
+
+  public getOneDiscussion(discussionId) {
+    let body = {
+      "discussionId": discussionId
+    };
+    return this.http.post<any>(this._discussionUrl + "/getOneDiscussion", body);
+  }
+
+  public sendViews(views) {
+
   }
 }
