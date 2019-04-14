@@ -19,4 +19,8 @@ export class DiscussionsService {
     }
     return this.http.post<any>(this._discussionUrl + "/getall_discussions_oneworkspace", body);
   }
+
+  public deleteView(body) {
+    return this.http.post<any>(this._discussionUrl + "/deleteView", body);
+  }
 }

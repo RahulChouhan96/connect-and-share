@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit {
   sendMail() {
     this.composedMail.from = this.userName;
     this.chatSrv.sendMail(this.composedMail);
-    // this.router.navigate(["connect_and_share/user/inbox"]);
+    this.router.navigate(["connect_and_share/user/sent"]);
   }
 
   sendMsg() {

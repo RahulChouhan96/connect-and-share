@@ -57,6 +57,10 @@ export class GetOneComponent implements OnInit {
       );
   }
 
+  // getAllEmpUserIds(){
+  //   this.workSpacesSrv.getAllEmpUserIds(this.userN)
+  // }
+
   getAllDiscussions() {
     console.log(this.companyId);
     this.discussionsSrv.getAllDiscussion(this.companyId)

@@ -1,10 +1,59 @@
-<h1>{{discussion.topic}} </h1>
-<p>{{discussion.description}} </p>
+<!doctype html>
+<html lang="en">
 
-<div *ngFor="let rec of recieve">
-    <p>{{rec.userName}} </p>
-    <p>{{rec.view}} </p>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-Your Views: <input type="text" [(ngModel)]="view">
-<input type="button" value="Send" (click)="sendViews()">
+    <title>Sticky Footer Template for Bootstrap</title>
+
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer/"> -->
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="sticky-footer.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <div class="discuss">
+            <h1 class="mt-5">{{discussion.topic}}</h1>
+            <p class="lead">{{discussion.description}}</p>
+        </div>
+        <h6>Views</h6>
+        <div *ngFor="let rec of recieve" style="margin: 12px !important;">
+            <p style="margin: 0px;"><span style="font-weight: 900 !important"><a routerLink="">{{rec.name}}</a> says</span> -{{rec.view}}</p>
+            <a *ngIf="isUserAdmin()"
+                href="/connect_and_share/workspaces/getOneWorkspace/{{companyId}}/{{discussionId}}"
+                (click)="deleteView(rec._id)">Delete</a>
+        </div>
+        <input type="text" [(ngModel)]="view" placeholder="Your Views">
+        <input type="button" class="btn btn-primary btn-style" value="Send" (click)="sendViews()">
+    </main>
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
+    <h1>{{discussion.topic}} </h1>
+    <p>{{discussion.description}} </p>
+
+    <div *ngFor="let rec of recieve">
+        <p>{{rec.userName}} </p>
+        <p>{{rec.view}} </p>
+    </div>
+
+    Your Views: <input type="text" [(ngModel)]="view">
+    <input type="button" value="Send" (click)="sendViews()"> -->
+
+</body>
+
+</html>

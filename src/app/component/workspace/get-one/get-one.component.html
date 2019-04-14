@@ -12,8 +12,8 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/jumbotron/">
 
   <!-- Bootstrap core CSS -->
-  <link href="../../../assets/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link href="../../../assets/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
   <style>
     .bd-placeholder-img {
@@ -53,17 +53,18 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-2 sidebar">
+      <div class="col-sm-12 col-md-2 sidebar">
         <h4>Employees</h4>
-        <p *ngFor="let empName of userEmpNames;"><a routerLink="">{{empName.name}} </a> </p>
+        <p *ngFor="let empName of userEmpNames;"><a style="color:black"
+            routerLink="/connect_and_share/user/profile/{{empName.userId}}">{{empName.name}} </a> </p>
       </div>
-      <div class="col-md-10">
+      <div class="col-sm-12 col-md-10">
         <div *ngFor="let discussion of discussions" class="discussion">
           <h2>
-              <a routerLink="/connect_and_share/workspaces/getOneWorkspace/{{companyId}}/{{discussion.discussionId}}">{{discussion.topic}}
-              </a>
+            <a routerLink="/connect_and_share/workspaces/getOneWorkspace/{{companyId}}/{{discussion.discussionId}}">{{discussion.topic}}
+            </a>
           </h2>
-          
+
           <p>{{discussion.description}} </p>
         </div>
       </div>

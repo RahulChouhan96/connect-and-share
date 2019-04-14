@@ -7,12 +7,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
+  userId: String;
   constructor(private userSrv: UserService) { }
 
   ngOnInit() {
+    this.getUserId();
   }
   public logOut() {
     this.userSrv.logOut();
+  }
+
+  public getUserId() {
+    this.userId = sessionStorage.getItem("userId");
   }
 }

@@ -25,6 +25,7 @@ import { MainPageComponent } from './component/main-page/main-page.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { GetOneDiscussionComponent } from './component/get-one-discussion/get-one-discussion.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CheckMailComponent } from './component/check-mail/check-mail.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AddEmpComponent,
     MainPageComponent,
     NavigationComponent,
-    GetOneDiscussionComponent
+    GetOneDiscussionComponent,
+    CheckMailComponent
   ],
   imports: [
     BrowserModule,

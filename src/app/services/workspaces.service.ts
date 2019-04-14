@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class WorkspacesService {
   private _companyUrl = "http://localhost:5000/connect_and_share/company";
   private _discussionUrl = "http://localhost:5000/connect_and_share/company/discussion";
+  private _userUrl = "http://localhost:5000/connect_and_share/user";
   constructor(private http: HttpClient) { }
 
   public createWorkSpace(workSpace) {
@@ -45,6 +46,13 @@ export class WorkspacesService {
     return this.http.post<any>(this._companyUrl + "/getAllEmpsOneWorkSpace", body);
   }
 
+  // public getAllEmpUserIds(userName){
+  //   let body = {
+  //     "userName": userName
+  //   }
+  //   return this.http.post<any>(this._userUrl + "/get_one_userId", body);
+  // }
+
   public getOneDiscussion(discussionId) {
     let body = {
       "discussionId": discussionId
@@ -55,4 +63,12 @@ export class WorkspacesService {
   public sendViews(views) {
 
   }
+
+  public getWorkSpaceAdmin(companyId) {
+    let body = {
+      "companyId": companyId
+    }
+    return this.http.post<any>(this._companyUrl + "/getWorkSpaceAdmin", body);
+  }
+
 }

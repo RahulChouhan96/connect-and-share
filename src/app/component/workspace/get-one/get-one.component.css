@@ -41,8 +41,8 @@
   }
 
   .sidebar{
-      background-color: #212529;
-      color: white;
+      background-color: aqua;
+      color: black;
   }
 
   a{
@@ -51,8 +51,8 @@
   }
 
   .discussion{
-      background-color: #212529;
-      color: white;
+      background-color: aqua;
+      color: black;
       padding: 15px;
       margin: 10px;
   }

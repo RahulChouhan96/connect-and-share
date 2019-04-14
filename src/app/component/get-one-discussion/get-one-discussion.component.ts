@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
 import { ChatService } from 'src/app/chat.service';
+import { DiscussionsService } from 'src/app/services/discussions.service';
 
 @Component({
   selector: 'app-get-one-discussion',
@@ -15,14 +16,19 @@ export class GetOneDiscussionComponent implements OnInit {
   companyId: String;
   recieve = [];
   userName: String;
-  constructor(private acRoute: ActivatedRoute, private workSpaceSrv: WorkspacesService, private chatSrv: ChatService) { }
+  name: String;
+  workSpaceAdminName: String;
+  constructor(private acRoute: ActivatedRoute, private workSpaceSrv: WorkspacesService, 
+    private chatSrv: ChatService, private discussionsSrv: DiscussionsService) { }
 
   ngOnInit() {
     this.getUserName();
+    this.getName();
     this.getDiscussionId();
     this.getOneDiscussion();
     this.getGrpMsgs();
     this.joinGroup();
+    this.checkUser();
   }
 
   public getOneDiscussion() {
@@ -44,7 +50,8 @@ export class GetOneDiscussionComponent implements OnInit {
       // "companyId": this.companyId,
       "discussionId": this.discussionId,
       "view": this.view,
-      "userName": this.userName
+      "userName": this.userName,
+      "name": this.name
     }
     this.chatSrv.sendViews(obj);
     this.view = "";
@@ -57,7 +64,8 @@ export class GetOneDiscussionComponent implements OnInit {
           console.log(res);
           let obj = {
             "view": res.view,
-            "userName": res.userName
+            "userName": res.userName,
+            "name": res.name,
           }
           this.recieve.push(obj);
         },
@@ -82,5 +90,42 @@ export class GetOneDiscussionComponent implements OnInit {
 
   public getUserName() {
     this.userName = sessionStorage.getItem("userName");
+  }
+
+  public getName() {
+    this.name = sessionStorage.getItem("name");
+  }
+
+  public isUserAdmin() {
+    return this.userName === this.workSpaceAdminName;
+  }
+
+  public checkUser() {
+    this.workSpaceSrv.getWorkSpaceAdmin(this.companyId)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.workSpaceAdminName = res.response.userAdminName;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  public deleteView(_id){
+    let body = {
+      "discussionId": this.discussionId,
+      "_id": _id
+    }
+    this.discussionsSrv.deleteView(body)
+    .subscribe(
+      res =>{
+        console.log(res);
+      },
+      err =>{
+        console.log(err);
+      }
+    );
   }
 }

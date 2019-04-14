@@ -15,6 +15,7 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { GetOneDiscussionComponent } from './component/get-one-discussion/get-one-discussion.component';
 import { SentComponent } from './component/sent/sent.component';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'connect_and_share/registration', component: UserRegistrationComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'connect_and_share/user/chat', component: ChatComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/user/inbox', component: InboxComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/user/sent', component: SentComponent, canActivate: [RoutingGuard] },
+  { path: 'connect_and_share/user/profile/:userId', component: UserProfileComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/workspaces/create', component: CreateComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/workspaces', component: WorkspacesComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/workspaces/getOneWorkspace/add_discussion/:companyId', component: AddDiscussionComponent, canActivate: [RoutingGuard] },

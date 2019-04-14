@@ -14,6 +14,7 @@ export class UserRegistrationComponent implements OnInit {
     "phoneNo": "",
     "password": ""
   };
+  error: String
   checkPass: String;
   constructor(private userSrv: UserService, private router: Router) { }
 
