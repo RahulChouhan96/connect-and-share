@@ -34,6 +34,12 @@ export class ChatComponent implements OnInit {
 
   constructor(private chatSrv: ChatService, private userSrv: UserService, private router: Router) { }
 
+  data: any = {};
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
+  }
+  
   sendMail() {
     this.composedMail.from = this.userName;
     this.chatSrv.sendMail(this.composedMail);

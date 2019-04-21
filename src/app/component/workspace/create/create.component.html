@@ -37,18 +37,21 @@
 </head>
 
 <body>
-  <form class="form-signin">
+  <form class="form-signin" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div class="text-center mb-4">
       <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Create Workspace</h1>
-      <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
-          href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
     </div>
 
     <div class="form-label-group">
       <input type="text" id="workSpaceName" class="form-control" name="workSpaceName"
-        [(ngModel)]="newWorkSpace.companyName" placeholder="WorkSpace Name" required autofocus>
+        [(ngModel)]="newWorkSpace.companyName" placeholder="WorkSpace Name" required #workspaceName="ngModel">
       <label for="workSpaceName">WorkSpace Name</label>
+    </div>
+    <div *ngIf="workspaceName.invalid && workspaceName.touched" style="color:red;">
+      <div *ngIf="workspaceName.errors.required">
+        This Field is Mandatory
+      </div>
     </div>
 
     <div class="form-label-group">
@@ -59,8 +62,13 @@
 
     <div class="form-label-group">
       <input type="text" id="areaOfWork" class="form-control" name="area" [(ngModel)]="newWorkSpace.areaOfWork"
-        placeholder="Area Of Work" required>
+        placeholder="Area Of Work" required #areaOfWork="ngModel">
       <label for="areaOfWork">Area Of Work</label>
+    </div>
+    <div *ngIf="areaOfWork.invalid && areaOfWork.touched" style="color:red;">
+      <div *ngIf="areaOfWork.errors.required">
+        This Field is Mandatory
+      </div>
     </div>
 
     <div class="form-label-group">
@@ -68,7 +76,8 @@
         placeholder="Description"> </textarea>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" (click)="createWorkSpace()" type="submit">Create</button>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="f.form.pristine || f.form.invalid"
+      (click)="createWorkSpace()" type="submit">Create</button>
     <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2019</p>
   </form>
 </body>

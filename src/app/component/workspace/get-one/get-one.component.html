@@ -55,8 +55,13 @@
     <div class="row">
       <div class="col-sm-12 col-md-2 sidebar">
         <h4>Employees</h4>
-        <p *ngFor="let empName of userEmpNames;"><a style="color:black"
+        <div *ngIf="userEmpNames.length; else other_content">
+          <p *ngFor="let empName of userEmpNames;"><a style="color:black"
             routerLink="/connect_and_share/user/profile/{{empName.userId}}">{{empName.name}} </a> </p>
+        </div>
+        <ng-template #other_content>
+          No Employees in your workspaces yet.
+        </ng-template>
       </div>
       <div class="col-sm-12 col-md-10">
         <div *ngFor="let discussion of discussions" class="discussion">

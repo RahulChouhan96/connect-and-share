@@ -23,4 +23,11 @@ export class DiscussionsService {
   public deleteView(body) {
     return this.http.post<any>(this._discussionUrl + "/deleteView", body);
   }
+
+  public getCurrentDiscussion(userId) {
+    let body = {
+      "userId": userId
+    };
+    return this.http.post<any>(this._discussionUrl + "/getCurrentDiscussion", body);
+  }
 }

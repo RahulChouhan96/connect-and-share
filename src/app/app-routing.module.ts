@@ -16,11 +16,14 @@ import { MainPageComponent } from './component/main-page/main-page.component';
 import { GetOneDiscussionComponent } from './component/get-one-discussion/get-one-discussion.component';
 import { SentComponent } from './component/sent/sent.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { HomeComponent } from './component/home/home.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: 'connect_and_share/cover', component: MainPageComponent },
   { path: 'connect_and_share/registration', component: UserRegistrationComponent },
   { path: 'connect_and_share/login', component: UserLoginComponent },
-  { path: 'connect_and_share/user', component: MainPageComponent, canActivate: [RoutingGuard] },
+  { path: 'connect_and_share/home', component: HomeComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/user/chat', component: ChatComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/user/inbox', component: InboxComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/user/sent', component: SentComponent, canActivate: [RoutingGuard] },
@@ -31,6 +34,7 @@ const routes: Routes = [
   { path: 'connect_and_share/workspaces/getOneWorkspace/:companyId', component: GetOneComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/workspaces/getOneWorkspace/addEmp/:companyId/:companyName', component: AddEmpComponent, canActivate: [RoutingGuard] },
   { path: 'connect_and_share/workspaces/getOneWorkspace/:companyId/:discussionId', component: GetOneDiscussionComponent, canActivate: [RoutingGuard] },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

@@ -26,6 +26,9 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { GetOneDiscussionComponent } from './component/get-one-discussion/get-one-discussion.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CheckMailComponent } from './component/check-mail/check-mail.component';
+import { HomeComponent } from './component/home/home.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { CheckMailComponent } from './component/check-mail/check-mail.component'
     MainPageComponent,
     NavigationComponent,
     GetOneDiscussionComponent,
-    CheckMailComponent
+    CheckMailComponent,
+    HomeComponent,
+    FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

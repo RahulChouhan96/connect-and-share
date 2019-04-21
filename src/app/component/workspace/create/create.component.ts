@@ -20,6 +20,12 @@ export class CreateComponent implements OnInit {
     this.getUserName();
   }
 
+  data: any = {};
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
+  }
+
   createWorkSpace() {
     this.newWorkSpace.userName = this.getUserName();
     console.log(this.newWorkSpace.userName);

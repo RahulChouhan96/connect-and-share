@@ -37,18 +37,21 @@
 </head>
 
 <body>
-  <form class="form-signin">
+  <form class="form-signin" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div class="text-center mb-4">
       <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Add Discussion</h1>
-      <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a
-          href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
     </div>
 
     <div class="form-label-group">
       <input type="text" id="topic" class="form-control" name="topic" [(ngModel)]="discussion.topic" placeholder="Topic"
-        required autofocus>
+        required autofocus #topic="ngModel">
       <label for="topic">Topic</label>
+    </div>
+    <div *ngIf="topic.invalid && topic.touched" style="color:red;">
+      <div *ngIf="topic.errors.required">
+        Mandatory Field
+      </div>
     </div>
 
     <div class="form-label-group">
@@ -56,7 +59,8 @@
         [(ngModel)]="discussion.description"></textarea>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" (click)="addDiscussion()" type="submit">Add</button>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="f.form.pristine || f.form.invalid"
+      (click)="addDiscussion()" type="submit">Add</button>
     <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2019</p>
   </form>
 </body>

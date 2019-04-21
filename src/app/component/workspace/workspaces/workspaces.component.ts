@@ -50,7 +50,7 @@ export class WorkspacesComponent implements OnInit {
     this.workSpaceSrv.getEmpWorkSpaces(this.getUserName())
       .subscribe(
         res => {
-          console.log(res.auth);
+          console.log(res);
           this.empResponse = res;
           this.empWorkSpaces = res.response;
         },

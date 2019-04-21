@@ -1,29 +1,3 @@
-<!-- <div *ngFor="let message of messages">
-  {{message}}
-</div>
-
-<p>To:&nbsp;</p> <input type="text" [(ngModel)]="composedMail.to">
-
-<p>Subject:&nbsp;</p><input type="text" [(ngModel)]="composedMail.subject">
-
-<p>Mail:&nbsp;</p><input type="text" [(ngModel)]="composedMail.message" required>
-
-<input type="button" value="SEND" (click)="sendMail()"> -->
-<!-- 
-<input type="text" [(ngModel)]="sendingMsg" (keyup)="typing()">
-<button (click)="sendMsgToOne()">Send</button> -->
-
-<!-- <p *ngIf="recievingTypingStatus">
-  {{sendersName}} is typing...
-</p> -->
-
-
-<!-- <div *ngIf="receivedMail">
-  <p>Subject: {{receivedMail.subject}} </p>
-  <p>Message: {{receivedMail.message}} </p>
-</div> -->
-
-
 <html>
 
 <head>
@@ -37,29 +11,25 @@
 </head>
 
 <body>
-
   <div class="container">
-
     <div class="row">
-
       <div class="col-xl-8 offset-xl-2 py-5">
-
         <h1>New Mail</h1>
-
-        <form id="contact-form" method="post" action="contact.php" role="form">
-
+        <form id="contact-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="messages"></div>
-
           <div class="controls">
-
             <div class="row">
-
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="form_lastname">To *</label>
-                  <input id="form_lastname" type="email" name="name" class="form-control" [(ngModel)]="composedMail.to"
-                    required="required" data-error="Lastname is required.">
+                  <input id="form_lastname" type="email" name="username" class="form-control"
+                    [(ngModel)]="composedMail.to" required data-error="Lastname is required." #username="ngModel">
                   <div class="help-block with-errors"></div>
+                </div>
+                <div *ngIf="username.invalid && username.touched" style="color:red;">
+                  <div *ngIf="username.errors.required">
+                    Mandatory Field
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,28 +47,27 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="form_message">Message *</label>
-                  <textarea id="form_message" name="message" class="form-control" rows="4" required="required"
-                    [(ngModel)]="composedMail.message" data-error="Please, leave us a message."></textarea>
+                  <textarea id="form_message" name="message" class="form-control" rows="4" required
+                    [(ngModel)]="composedMail.message" data-error="Please, leave us a message."
+                    #message="ngModel"></textarea>
                   <div class="help-block with-errors"></div>
+                </div>
+                <div *ngIf="message.invalid && message.touched" style="color:red;">
+                  <div *ngIf="message.errors.required">
+                    Field is Mandatory
+                  </div>
                 </div>
               </div>
               <div class="col-md-12">
-                <input type="submit" class="btn btn-success btn-send" (click)="sendMail()" value="Send Mail">
+                <input type="submit" [disabled]="f.form.pristine || f.form.invalid" class="btn btn-success btn-send"
+                  (click)="sendMail()" value="Send Mail">
               </div>
             </div>
           </div>
-
         </form>
-
       </div>
-      <!-- /.8 -->
-
     </div>
-    <!-- /.row-->
-
   </div>
-  <!-- /.container-->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

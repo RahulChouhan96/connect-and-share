@@ -40,6 +40,6 @@ export class UserService {
 
   logOut() {
     sessionStorage.clear();
-    this.router.navigate(["connect_and_share/login"]);
+    this.router.navigate(["connect_and_share/cover"]);
   }
 }

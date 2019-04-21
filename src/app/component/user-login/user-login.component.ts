@@ -22,7 +22,11 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  data: any = {};
 
+  onSubmit() {
+    alert(JSON.stringify(this.data));
+  }
   userLogin() {
     this.userSrv.userLogin(this.cred)
       .subscribe(
@@ -36,7 +40,7 @@ export class UserLoginComponent implements OnInit {
             sessionStorage.setItem("userName", res.userProfile.userName);
             sessionStorage.setItem("companyIds", res.userProfile.companyId);
             // this.userSrv.takeUserName(res.userProfile.userName);
-            this.router.navigate(["connect_and_share/user"]);
+            this.router.navigate(["connect_and_share/home"]);
           } else {
             console.log(res);
             this.error = res.message;

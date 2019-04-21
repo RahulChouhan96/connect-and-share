@@ -14,10 +14,17 @@ export class AddEmpComponent implements OnInit {
     "userName": "",
     "designation": ""
   }
+  error: String;
   constructor(private acRoute: ActivatedRoute, private workSpacesSrv: WorkspacesService, private router: Router) { }
 
   ngOnInit() {
     this.getCompanyNameAndId();
+  }
+
+  data: any = {};
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
   }
 
   addEmp() {
@@ -25,10 +32,11 @@ export class AddEmpComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.router.navigate(["connect_and_share/workspaces"]);
+          this.router.navigate([`connect_and_share/workspaces/getOneWorkspace/${this.newEmp.companyId}`]);
         },
         err => {
           console.log(err);
+          this.error = err.error.message;
         }
       );
   }

@@ -21,6 +21,12 @@ export class UserRegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
+  data: any = {};
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
+  }
+
   isPassCorrect() {
     return this.newUser.password == this.checkPass;
   }
@@ -35,6 +41,7 @@ export class UserRegistrationComponent implements OnInit {
           },
           err => {
             console.log(err);
+            this.error = err.error.message;
           }
         );
   }

@@ -13,40 +13,76 @@
         <div *ngIf="error" style="color:red">
           {{error}}
         </div>
-        <form>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" [(ngModel)]="newUser.name" name="name" class="form-control" placeholder="Name" required>
+            <input type="text" id="name" [(ngModel)]="newUser.name" name="name" class="form-control" placeholder="Name"
+              required #name="ngModel" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" minlength="3">
+          </div>
+          <div *ngIf="name.invalid && name.touched" style="color:red;">
+            <div *ngIf="name.errors.required">
+              Field is mandatory
+            </div>
+            <div *ngIf="name.errors.pattern">
+              Wrong characters passed
+            </div>
+            <div *ngIf="name.errors.minlength">
+              More than 3 characters required
+            </div>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
             <input type="text" [(ngModel)]="newUser.userName" name="userName" class="form-control"
-              placeholder="Username" required>
+              placeholder="Username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+              #username="ngModel">
+          </div>
+          <div *ngIf="username.invalid && username.touched" style="color:red;">
+            <div *ngIf="username.errors.required">
+              Field is mandatory
+            </div>
+            <div *ngIf="username.errors.pattern">
+              Invalid pattern
+            </div>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
             <input type="text" [(ngModel)]="newUser.phoneNo" name="phoneNo" class="form-control"
-              placeholder="Mobile Number">
+              placeholder="Mobile Number" #phoneNo="ngModel" pattern="^[2-9]{2}[0-9]{8}$">
+          </div>
+          <div *ngIf="phoneNo.invalid && phoneNo.touched" style="color:red;">
+            <div *ngIf="phoneNo.errors.pattern">
+              Invalid Pattern
+            </div>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
             <input type="password" [(ngModel)]="newUser.password" name="password" class="form-control"
-              placeholder="Password" required>
+              placeholder="Password" required #password="ngModel">
+          </div>
+          <div *ngIf="password.invalid && password.touched" style="color:red;">
+            <div *ngIf="password.errors.required">
+              Password is required
+            </div>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input type="password" [(ngModel)]="checkPass" name="password" class="form-control"
-              placeholder="Re-enter Password" required>
+            <input type="password" [(ngModel)]="checkPass" name="repassword" class="form-control"
+              placeholder="Re-enter Password" required #repassword="ngModel">
+          </div>
+          <div *ngIf="repassword.invalid && repassword.touched" style="color:red;">
+            <div *ngIf="repassword.errors.required">
+              Mandatory Field
+            </div>
           </div>
           <div *ngIf="checkPass">
             <p style="color: red" *ngIf="!isPassCorrect(); else other_content">Passwords not matching</p>
@@ -55,16 +91,14 @@
             </ng-template>
           </div>
           <div class="form-group">
-            <input type="submit" value="Sign Up" (click)="userSignup()" class="btn float-right login_btn">
+            <input type="submit" value="Sign Up" (click)="userSignup()" [disabled]="f.form.pristine || f.form.invalid"
+              class="btn float-right login_btn">
           </div>
         </form>
       </div>
       <div class="card-footer">
         <div class="d-flex justify-content-center links">
-          Don't have an account?<a href="#">Sign Up</a>
-        </div>
-        <div class="d-flex justify-content-center">
-          <a href="#">Forgot your password?</a>
+          Already have an account?<a href="/connect_and_share/login">Sign In</a>
         </div>
       </div>
     </div>

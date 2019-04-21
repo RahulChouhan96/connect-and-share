@@ -20,6 +20,13 @@ export class AddDiscussionComponent implements OnInit {
     this.getCompanyId();
     this.showMsg();
   }
+
+  data: any = {};
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
+  }
+  
   addDiscussion() {
     this.discussionsSrv.addOneDiscussion(this.discussion)
       .subscribe(
