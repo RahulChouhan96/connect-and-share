@@ -1,7 +1,7 @@
 // server connection related terms
 let port = "5000";
-let host = "127.0.0.1";
-// let host = "0.0.0.0";
+// let host = "127.0.0.1";
+let host = "0.0.0.0";
 
 // database connection related terms
 let password = encodeURIComponent("Password%401");
