@@ -149,7 +149,7 @@ io.on('connection', (socket) => {
 //     io.emit("User Disconnected");
 // });
 
-server.listen(CONFIG.PORT, CONFIG.HOST, (error) => {
+server.listen(process.env.PORT || CONFIG.PORT, CONFIG.HOST, (error) => {
     if (error) {
         console.log(`Error while connecting to the server with port ${CONFIG.PORT}`);
         console.log(error);
