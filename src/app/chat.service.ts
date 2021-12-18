@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class ChatService {
   private url = "http://localhost:5000";
   private socket;
-  private _mailUrl = this.url + "/connect_and_share/user/inbox";
-  private _sentMailUrl = this.url + "/connect_and_share/user/sent";
+  private _mailUrl = this.url + "/api/user/inbox";
+  private _sentMailUrl = this.url + "/api/user/sent";
 
   constructor(private http: HttpClient) {
     this.socket = io(this.url);

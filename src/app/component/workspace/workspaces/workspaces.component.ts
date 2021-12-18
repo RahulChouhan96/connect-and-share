@@ -62,6 +62,6 @@ export class WorkspacesComponent implements OnInit {
   }
 
   // sendCompanyId(companyId){
-  //   this.router.navigate([`/connect_and_share/workspaces/getOneWorkspace/${companyId}`]);
+  //   this.router.navigate([`/workspaces/getOneWorkspace/${companyId}`]);
   // }
 }

@@ -20,20 +20,20 @@ import { HomeComponent } from './component/home/home.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'connect_and_share/cover', component: MainPageComponent },
-  { path: 'connect_and_share/registration', component: UserRegistrationComponent },
-  { path: 'connect_and_share/login', component: UserLoginComponent },
-  { path: 'connect_and_share/home', component: HomeComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/user/chat', component: ChatComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/user/inbox', component: InboxComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/user/sent', component: SentComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/user/profile/:userId', component: UserProfileComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces/create', component: CreateComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces', component: WorkspacesComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces/getOneWorkspace/add_discussion/:companyId', component: AddDiscussionComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces/getOneWorkspace/:companyId', component: GetOneComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces/getOneWorkspace/addEmp/:companyId/:companyName', component: AddEmpComponent, canActivate: [RoutingGuard] },
-  { path: 'connect_and_share/workspaces/getOneWorkspace/:companyId/:discussionId', component: GetOneDiscussionComponent, canActivate: [RoutingGuard] },
+  { path: '', component: MainPageComponent },
+  { path: 'registration', component: UserRegistrationComponent },
+  { path: 'login', component: UserLoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [RoutingGuard] },
+  { path: 'user/chat', component: ChatComponent, canActivate: [RoutingGuard] },
+  { path: 'user/inbox', component: InboxComponent, canActivate: [RoutingGuard] },
+  { path: 'user/sent', component: SentComponent, canActivate: [RoutingGuard] },
+  { path: 'user/profile/:userId', component: UserProfileComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces/create', component: CreateComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces', component: WorkspacesComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces/getOneWorkspace/add_discussion/:companyId', component: AddDiscussionComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces/getOneWorkspace/:companyId', component: GetOneComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces/getOneWorkspace/addEmp/:companyId/:companyName', component: AddEmpComponent, canActivate: [RoutingGuard] },
+  { path: 'workspaces/getOneWorkspace/:companyId/:discussionId', component: GetOneDiscussionComponent, canActivate: [RoutingGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

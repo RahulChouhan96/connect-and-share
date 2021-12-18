@@ -36,9 +36,11 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" [(ngModel)]="newUser.userName" name="userName" class="form-control"
+            <!-- <input type="text" [(ngModel)]="newUser.userName" name="userName" class="form-control"
               placeholder="Username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-              #username="ngModel">
+              #username="ngModel"> -->
+            <input type="text" [(ngModel)]="newUser.userName" name="userName" class="form-control"
+              placeholder="Username" required #username="ngModel">
           </div>
           <div *ngIf="username.invalid && username.touched" style="color:red;">
             <div *ngIf="username.errors.required">
@@ -98,7 +100,7 @@
       </div>
       <div class="card-footer">
         <div class="d-flex justify-content-center links">
-          Already have an account?<a href="/connect_and_share/login">Sign In</a>
+          Already have an account?<a href="/login">Sign In</a>
         </div>
       </div>
     </div>

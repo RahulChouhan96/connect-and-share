@@ -7,12 +7,13 @@ require("./mail.model");
 require("./discussions.model");
 
 let options = {
-    user: CONFIG.DBUSR,
-    pass: CONFIG.DBPWD,
-    authSource: CONFIG.authSource,
+    // user: CONFIG.DBUSR,
+    // pass: CONFIG.DBPWD,
+    // authSource: CONFIG.authSource,
     useNewUrlParser: true
 }
-mongoose.connect(CONFIG.DBURL, options);
+
+mongoose.connect(CONFIG.DBURL);
 
 let _conn = mongoose.connection;
 

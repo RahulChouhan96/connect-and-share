@@ -42,9 +42,9 @@
         <h1 class="jumbotron-heading">{{workSpace.companyName}}</h1>
         <p class="lead text-muted">{{workSpace.areaOfWork}}</p>
         <p *ngIf="isUserAdmin()">
-          <a routerLink="/connect_and_share/workspaces/getOneWorkspace/add_discussion/{{companyId}}"
+          <a routerLink="/workspaces/getOneWorkspace/add_discussion/{{companyId}}"
             class="btn btn-primary my-2 anc-pad">Add Discussion</a>
-          <a routerLink="/connect_and_share/workspaces/getOneWorkspace/addEmp/{{companyId}}/{{workSpace.companyName}}"
+          <a routerLink="/workspaces/getOneWorkspace/addEmp/{{companyId}}/{{workSpace.companyName}}"
             class="btn btn-primary my-2 anc-pad">Add An Employee</a>
         </p>
       </div>
@@ -57,7 +57,7 @@
         <h4>Employees</h4>
         <div *ngIf="userEmpNames.length; else other_content">
           <p *ngFor="let empName of userEmpNames;"><a style="color:black"
-            routerLink="/connect_and_share/user/profile/{{empName.userId}}">{{empName.name}} </a> </p>
+            routerLink="/user/profile/{{empName.userId}}">{{empName.name}} </a> </p>
         </div>
         <ng-template #other_content>
           No Employees in your workspaces yet.
@@ -66,7 +66,7 @@
       <div class="col-sm-12 col-md-10">
         <div *ngFor="let discussion of discussions" class="discussion">
           <h2>
-            <a routerLink="/connect_and_share/workspaces/getOneWorkspace/{{companyId}}/{{discussion.discussionId}}">{{discussion.topic}}
+            <a routerLink="/workspaces/getOneWorkspace/{{companyId}}/{{discussion.discussionId}}">{{discussion.topic}}
             </a>
           </h2>
 

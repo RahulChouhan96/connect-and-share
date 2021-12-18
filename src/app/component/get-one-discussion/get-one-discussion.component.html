@@ -31,7 +31,7 @@
         <div *ngFor="let rec of recieve" style="margin: 12px !important;">
             <p style="margin: 0px;"><span style="font-weight: 900 !important"><a routerLink="">{{rec.name}}</a> says</span> -{{rec.view}}</p>
             <a *ngIf="isUserAdmin()"
-                href="/connect_and_share/workspaces/getOneWorkspace/{{companyId}}/{{discussionId}}"
+                href="/workspaces/getOneWorkspace/{{companyId}}/{{discussionId}}"
                 (click)="deleteView(rec._id)">Delete</a>
         </div>
         <input type="text" [(ngModel)]="view" placeholder="Your Views">

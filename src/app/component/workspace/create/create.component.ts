@@ -33,7 +33,7 @@ export class CreateComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.router.navigate(["connect_and_share/workspaces"]);
+          this.router.navigate(["workspaces"]);
         },
         err => {
           console.log(err);

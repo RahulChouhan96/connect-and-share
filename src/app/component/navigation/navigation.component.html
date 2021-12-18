@@ -6,15 +6,15 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul *ngIf="userSrv.isLogIn(); else other_content" class="navbar-nav mr-auto">
+    <ul *ngIf="userId; else other_content" class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/connect_and_share/home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/connect_and_share/workspaces">Workspace</a>
+        <a class="nav-link" routerLink="/workspaces">Workspace</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/connect_and_share/user/profile/{{userId}}">Profile</a>
+        <a class="nav-link" routerLink="/user/profile/{{userId}}">Profile</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -22,26 +22,26 @@
           Mail
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="connect_and_share/user/chat">Compose</a>
-          <a class="dropdown-item" routerLink="connect_and_share/user/inbox">Inbox</a>
-          <a class="dropdown-item" routerLink="connect_and_share/user/sent">Sent</a>
+          <a class="dropdown-item" routerLink="user/chat">Compose</a>
+          <a class="dropdown-item" routerLink="user/inbox">Inbox</a>
+          <a class="dropdown-item" routerLink="user/sent">Sent</a>
         </div>
       </li>
     </ul>
     <ng-template #other_content>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/connect_and_share/cover">Cover <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/cover">Cover <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/connect_and_share/registration">Sign Up</a>
+          <a class="nav-link" routerLink="/registration">Sign Up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/connect_and_share/login">Sign In</a>
+          <a class="nav-link" routerLink="/login">Sign In</a>
         </li>
       </ul>
     </ng-template>
-    <form *ngIf="userSrv.isLogIn();" class="form-inline my-2 my-lg-0">
+    <form *ngIf="userId" class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="logOut()" type="submit">Logout</button>
     </form>
   </div>

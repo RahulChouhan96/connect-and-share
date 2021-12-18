@@ -13,7 +13,7 @@ export class RoutingGuard implements CanActivate {
     if (this.userSrv.isLogIn()) {
       return true;
     } else {
-      this.router.navigate(["connect_and_share/login"]);
+      this.router.navigate(["login"]);
       return false;
     }
   }

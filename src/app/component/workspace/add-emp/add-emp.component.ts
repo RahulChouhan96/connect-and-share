@@ -32,7 +32,7 @@ export class AddEmpComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.router.navigate([`connect_and_share/workspaces/getOneWorkspace/${this.newEmp.companyId}`]);
+          this.router.navigate([`workspaces/getOneWorkspace/${this.newEmp.companyId}`]);
         },
         err => {
           console.log(err);

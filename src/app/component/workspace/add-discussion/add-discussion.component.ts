@@ -32,7 +32,7 @@ export class AddDiscussionComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.router.navigate([`connect_and_share/workspaces/getOneWorkspace/${this.discussion.companyId}`]);
+          this.router.navigate([`workspaces/getOneWorkspace/${this.discussion.companyId}`]);
         },
         err => {
           console.log(err);

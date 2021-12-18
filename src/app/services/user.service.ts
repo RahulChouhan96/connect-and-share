@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   userId: String;
-  private _userUrl = "http://localhost:5000/connect_and_share/user";
-  private _homeUrl = "http://localhost:5000/connect_and_share";
+  private _userUrl = "/api/user";
+  private _homeUrl = "/auth";
 
   userName: String;
 
@@ -40,6 +40,6 @@ export class UserService {
 
   logOut() {
     sessionStorage.clear();
-    this.router.navigate(["connect_and_share/cover"]);
+    this.router.navigate(["cover"]);
   }
 }

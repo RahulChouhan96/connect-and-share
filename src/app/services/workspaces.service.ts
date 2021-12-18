@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class WorkspacesService {
-  private _companyUrl = "http://localhost:5000/connect_and_share/company";
-  private _discussionUrl = "http://localhost:5000/connect_and_share/company/discussion";
-  private _userUrl = "http://localhost:5000/connect_and_share/user";
+  private _companyUrl = "http://localhost:5000/api/company";
+  private _discussionUrl = "http://localhost:5000/api/company/discussion";
+  private _userUrl = "http://localhost:5000/api/user";
   constructor(private http: HttpClient) { }
 
   public createWorkSpace(workSpace) {

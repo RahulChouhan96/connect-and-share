@@ -25,11 +25,15 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser.json({ type: "application/json" }));
 
-app.use("/connect_and_share", authRoutes);
-app.use("/connect_and_share/user", userRoutes);
-app.use("/connect_and_share/company", userCompanyRoutes);
-app.use("/connect_and_share/user", mailingRoutes);
-app.use("/connect_and_share/company/discussion", discussionRoutes);
+app.use("/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/company", userCompanyRoutes);
+app.use("/api/user", mailingRoutes);
+app.use("/api/company/discussion", discussionRoutes);
+
+app.use("/", express.static("dist/connect"));
+app.use("/home", express.static("dist/connect"));
+app.use("/registration", express.static("dist/connect"));
 
 // io.emit('some event', { for: 'everyone' });
 
@@ -150,6 +154,6 @@ server.listen(CONFIG.PORT, CONFIG.HOST, (error) => {
         console.log(`Error while connecting to the server with port ${CONFIG.PORT}`);
         console.log(error);
     } else {
-        console.log(`Server running successfully at port ${CONFIG.PORT}`);
+        console.log(`Server running successfully at port ${CONFIG.HOST}:${CONFIG.PORT}`);
     }
 });

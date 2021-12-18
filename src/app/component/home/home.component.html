@@ -12,7 +12,7 @@
         <div class="carousel-caption text-left" style="color: blue;">
           <h1>Mailing</h1>
           <p>Send mail to anyone you want to.</p>
-          <p><a class="btn btn-lg btn-primary" routerLink="/connect_and_share/user/chat" role="button">Send Mail</a></p>
+          <p><a class="btn btn-lg btn-primary" routerLink="/user/chat" role="button">Send Mail</a></p>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
         <div class="carousel-caption" style="color: blue;">
           <h1>Group Discussions</h1>
           <p>Along with sending mails, you can have group discussions with your employees</p>
-          <p><a class="btn btn-lg btn-primary" routerLink="/connect_and_share/workspaces" role="button">Check Your
+          <p><a class="btn btn-lg btn-primary" routerLink="/workspaces" role="button">Check Your
               Workspaces</a></p>
         </div>
       </div>
@@ -53,7 +53,7 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 <h1 class="text-center">Recent Discussions</h1>
-<div *ngIf="discussion; else other_content" class="container marketing">
+<div *ngIf="discussions; else other_content" class="container marketing">
 
   <!-- Three columns of text below the carousel -->
   <div class="row">
@@ -67,7 +67,7 @@
       <h2>{{discussion.topic}} </h2>
       <p>{{discussion.description}} </p>
       <p><a class="btn btn-secondary"
-          routerLink="/connect_and_share/workspaces/getOneWorkspace/{{discussion.companyId}}/{{discussion.discussionId}}"
+          routerLink="/workspaces/getOneWorkspace/{{discussion.companyId}}/{{discussion.discussionId}}"
           role="button">View details &raquo;</a></p>
     </div>
   </div>
